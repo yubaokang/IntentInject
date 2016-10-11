@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.novoda:bintray-release:0.3.4'//添加
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    tasks.withType(Javadoc) {
+        options {
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
+}
+//添加
+ext {
+    userOrg = 'ybk'
+    repoName = 'IntentInject'
+    groupId = 'com.yubaokang'
+    publishVersion = 'v1.0.0'
+    //uploadName =''
+    desc = 'A easy API to transmit bundle at activity and fragment'
+    website = 'https://github.com/yubaokang/IntentInject'
+    licences = ['Apache-2.0']
+}
+
+//gradlew clean build bintrayUpload -PbintrayUser=yubaokang -PbintrayKey=2863150362b98f44962621237e94a8c3987db383 -PdryRun=false
