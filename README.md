@@ -69,7 +69,7 @@ public class SplashActivity extends AppCompatActivity {
 }
 ```
 
-#### 在Fragment使用 暂时只支持V4的Fragment，相对于在Activity中的注解，前面都加上Arg
+#### 在Fragment使用,相对于在Activity中的注解，前面都加上Arg
 ```java
 public class BlankFragment1 extends Fragment {
     @ArgExtra
