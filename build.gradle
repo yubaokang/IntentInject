@@ -32,3 +32,5 @@ ext {
     website = 'https://github.com/yubaokang/IntentInject'
     licences = ['Apache-2.0']
 }
+
+//gradlew clean build bintrayUpload -PbintrayUser=yubaokang -PbintrayKey=******** -PdryRun=false
