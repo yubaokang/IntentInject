@@ -2,7 +2,7 @@
 
 实现Activity或者Fragment 快速传递Bundle
 
-[English doc](https://github.com/yubaokang/IntentInject/blob/master/README-ZH.md)
+[English doc](https://github.com/yubaokang/IntentInject/blob/master/README.md)
 
 ###引用：
 
