@@ -27,15 +27,14 @@ public class SplashActivity extends AppCompatActivity {
         tests.add(test);
         ArrayList<Integer> ints = new ArrayList<>();
         ints.add(11);
-        MainActivity_Intent.intent(this)
-                .aa(111)
-                .bb(1.2f)
-                .dou(1.2)
-                .id("idididid")
-                .test(test)
-                .datas(datas)
-                .tests(tests)
-                .ints(ints)
+        MainActivity_Builder.intent(this)
+//                .aa(111)
+//                .dou(1.2)
+//                .id("idididid")
+//                .test(test)
+//                .datas(datas)
+//                .tests(tests)
+//                .ints(ints)
                 .start();
     }
 }

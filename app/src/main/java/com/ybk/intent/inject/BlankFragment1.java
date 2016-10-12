@@ -14,9 +14,9 @@ import com.ybk.intent.inject.api.IntentInject;
 import java.util.ArrayList;
 
 public class BlankFragment1 extends Fragment {
-    @ArgExtra("param1")
+    @ArgExtra
     String param1;
-    @ArgExtra("param2")
+    @ArgExtra
     String param2;
     @ArgExtraArrayString("list")
     ArrayList<String> list;

@@ -1,5 +1,5 @@
 apply plugin: 'java'
-apply plugin: 'bintray-release'//添加
+apply plugin: 'com.novoda.bintray-release'//添加
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -22,7 +22,7 @@ publish {
     userOrg = rootProject.userOrg
     repoName = rootProject.repoName
     groupId = rootProject.groupId
-    //uploadName = rootProject.uploadName
+    uploadName = rootProject.uploadName
     publishVersion = rootProject.publishVersion
     desc = rootProject.description
     website = rootProject.website

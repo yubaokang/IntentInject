@@ -5,12 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * Created by yubao on 2016/10/7.
- */
-
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
 public @interface ArgExtra {
-    String value();
+    String value() default "";
 }

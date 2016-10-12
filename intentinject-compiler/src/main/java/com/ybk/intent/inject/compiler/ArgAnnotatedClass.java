@@ -54,7 +54,7 @@ public class ArgAnnotatedClass {
     }
 
     /**
-     * @return 生成Extras类MainActivity_Intent
+     * @return 生成Extras类MainActivity_Builder
      */
     public JavaFile generateExtras() {
         List<MethodSpec.Builder> methods = new ArrayList<>();
@@ -68,18 +68,22 @@ public class ArgAnnotatedClass {
                 "$T bundle=host.getArguments();\n" +
                         "if(bundle != null){\n", TypeUtil.BUNDLE);
         for (ArgExtraField field : extras) {
-            injectMethodBuilder.addStatement("      host.$N = ($T)bundle.get($S)", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
+            injectMethodBuilder.addCode("\tif(bundle.containsKey($S)) ", field.getKey());
+            injectMethodBuilder.addCode("host.$N = ($T)bundle.get($S);\n", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
         }
         for (ArgExtraArrayStringField field : extrasArrayStr) {
-            injectMethodBuilder.addStatement("      host.$N = ($T)bundle.get($S)", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
+            injectMethodBuilder.addCode("\tif(bundle.containsKey($S)) ", field.getKey());
+            injectMethodBuilder.addCode("host.$N = ($T)bundle.get($S);\n", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
         }
         for (ArgExtraArrayIntField field : extrasArrayInt) {
-            injectMethodBuilder.addStatement("      host.$N = ($T)bundle.get($S)", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
+            injectMethodBuilder.addCode("\tif(bundle.containsKey($S)) ", field.getKey());
+            injectMethodBuilder.addCode("host.$N = ($T)bundle.get($S);\n", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
         }
         for (ArgExtraArrayParcelableField field : extrasArrayPar) {
-            injectMethodBuilder.addStatement("      host.$N = ($T)bundle.get($S)", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
+            injectMethodBuilder.addCode("\tif(bundle.containsKey($S)) ", field.getKey());
+            injectMethodBuilder.addCode("host.$N = ($T)bundle.get($S);\n", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
         }
-        injectMethodBuilder.addCode("    }\n");
+        injectMethodBuilder.addCode("}\n");
 
         //builder
         MethodSpec.Builder builder = MethodSpec.methodBuilder("builder")
@@ -147,7 +151,7 @@ public class ArgAnnotatedClass {
         }
 
         //outter class
-        TypeSpec.Builder outter = TypeSpec.classBuilder(mClassElement.getSimpleName() + "_Intent")
+        TypeSpec.Builder outter = TypeSpec.classBuilder(mClassElement.getSimpleName() + "_Builder")
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                 .addSuperinterface(ParameterizedTypeName.get(TypeUtil.INJECT, TypeName.get(mClassElement.asType())))
                 .addType(inner.build());//add inner class

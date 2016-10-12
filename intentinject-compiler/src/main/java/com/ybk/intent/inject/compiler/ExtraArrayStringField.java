@@ -8,11 +8,6 @@ import javax.lang.model.element.Name;
 import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeMirror;
 
-/**
- * Created by brucezz on 2016-07-25.
- * Github: https://github.com/brucezz
- * Email: im.brucezz@gmail.com
- */
 public class ExtraArrayStringField {
     private VariableElement mFieldElement;
     private String key;
@@ -26,9 +21,9 @@ public class ExtraArrayStringField {
         ExtraArrayString extra = mFieldElement.getAnnotation(ExtraArrayString.class);
         key = extra.value();
 
-//        if (mResId == null) {
-//            throw new IllegalArgumentException(String.format("value() in %s for field %s is not valid !", BindView.class.getSimpleName(), mFieldElement.getSimpleName()));
-//        }
+        if ("".equals(key)) {
+            key = mFieldElement.getSimpleName().toString();
+        }
     }
 
     public Name getFieldName() {

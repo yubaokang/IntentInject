@@ -16,11 +16,10 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tv)
     TextView tv;
-    @Extra("id")
+    @Extra
     String id;
 
     @Extra("aa")
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Extra("test")
     Test test;
 
-    @ExtraArrayString("datas")
+    @ExtraArrayString
     ArrayList<String> datas;
 
     @ExtraArrayParcelable("tests")
@@ -60,6 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 "\nints:" + ints.get(0), Toast.LENGTH_LONG).show();
         ArrayList<String> lists = new ArrayList<>();
         lists.add("fragment");
-        getSupportFragmentManager().beginTransaction().add(R.id.activity_main, BlankFragment1_Intent.builder().param1("a").param2("a2").list(lists).build()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.activity_main, BlankFragment1_Builder.builder().param1("a").param2("a2").list(lists).build()).commit();
     }
 }

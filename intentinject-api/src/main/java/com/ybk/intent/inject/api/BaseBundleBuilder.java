@@ -14,9 +14,6 @@ import android.util.SparseArray;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Created by yubao on 2016/10/9.
- */
 public class BaseBundleBuilder<I> {
     protected I i;
     protected Intent intent;
@@ -186,7 +183,7 @@ public class BaseBundleBuilder<I> {
      *
      * @param name  key
      * @param value SparseArray Parcelable Object
-     * @return
+     * @return Bundle
      */
     public I extra(String name, SparseArray<? extends Parcelable> value) {
         bundle.putSparseParcelableArray(name, value);

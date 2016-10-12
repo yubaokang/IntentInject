@@ -16,8 +16,8 @@ dependencies {
 apply plugin: 'android-apt'
 
 dependencies {
-    compile 'com.yubaokang:intentinject-api:v1.0.0'
-    apt 'com.yubaokang:intentinject-compiler:v1.0.0'
+    compile 'com.yubaokang:intentinject-api:0.1.0'
+    apt 'com.yubaokang:intentinject-compiler:0.1.0'
 }
 ```
 
@@ -26,10 +26,11 @@ dependencies {
 #### 在Activity使用:
 ```java
 public class MainActivity extends AppCompatActivity {
-@Extra("name")
-String name;
-    @Extra("age")
+    @Extra
+    String name;//这种情况"name"就是默认的key
+    @Extra
     int age;
+    
     @Extra("price")
     float price;
     @Extra("dou")
@@ -54,7 +55,7 @@ String name;
 }
 ```
 
-记住一定要执行编译，否者无法生成MainActivity_Intent类
+记住一定要执行编译，否者无法生成MainActivity_Builder类
 
 ```java
 public class SplashActivity extends AppCompatActivity {
@@ -63,15 +64,15 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         //传值并且跳转到
-        MainActivity_Intent.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").start();
+        MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").start();
     }
 }
 ```
 
-#### 在Fragment使用，相对于在Activity中的注解，前面都加上Arg
+#### 在Fragment使用 暂时只支持V4的Fragment，相对于在Activity中的注解，前面都加上Arg
 ```java
 public class BlankFragment1 extends Fragment {
-    @ArgExtra("name")
+    @ArgExtra
     String name;
     @ArgExtra("age")
     int age;
@@ -89,9 +90,5 @@ public class BlankFragment1 extends Fragment {
 
 创建Fragment
 ```java
-public class TabActivity extends AppCompatActivity {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        BlankFragment1_Intent.builder().name("yubaokang").age("25").build();
-    }
+    BlankFragment1_Builder.builder().name("yubaokang").age("25").build();
 ```

@@ -16,14 +16,14 @@ public class ExtraField {
         if (element.getKind() != ElementKind.FIELD) {
             throw new IllegalArgumentException(String.format("Only fields can be annotated with @%s", Extra.class.getSimpleName()));
         }
-
         mFieldElement = (VariableElement) element;
         Extra extra = mFieldElement.getAnnotation(Extra.class);
+
         key = extra.value();
 
-//        if (mResId == null) {
-//            throw new IllegalArgumentException(String.format("value() in %s for field %s is not valid !", BindView.class.getSimpleName(), mFieldElement.getSimpleName()));
-//        }
+        if ("".equals(key)) {
+            key = mFieldElement.getSimpleName().toString();
+        }
     }
 
     public Name getFieldName() {

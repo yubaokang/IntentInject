@@ -6,11 +6,8 @@ import android.support.v4.app.Fragment;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by yubao on 2016/10/7.
- */
 public class IntentInject {
-    private static final Map<String, Inject> FINDER_MAP = new HashMap<>();
+    private static final Map<String, Inject<android.view.View.OnCreateContextMenuListener>> FINDER_MAP = new HashMap<String, Inject<android.view.View.OnCreateContextMenuListener>>();
 
     /**
      * @param activity 在Activity中使用
@@ -18,10 +15,10 @@ public class IntentInject {
     public static void inject(Activity activity) {
         String className = activity.getClass().getName();
         try {
-            Inject inject = FINDER_MAP.get(className);
+            Inject<android.view.View.OnCreateContextMenuListener> inject = FINDER_MAP.get(className);
             if (inject == null) {
-                Class<?> finderClass = Class.forName(className + "_Intent");
-                inject = (Inject) finderClass.newInstance();
+                Class<?> finderClass = Class.forName(className + "_Builder");
+                inject = (Inject<android.view.View.OnCreateContextMenuListener>) finderClass.newInstance();
                 FINDER_MAP.put(className, inject);
             }
             inject.inject(activity);
@@ -36,10 +33,10 @@ public class IntentInject {
     public static void inject(Fragment fragment) {
         String className = fragment.getClass().getName();
         try {
-            Inject inject = FINDER_MAP.get(className);
+            Inject<android.view.View.OnCreateContextMenuListener> inject = FINDER_MAP.get(className);
             if (inject == null) {
-                Class<?> finderClass = Class.forName(className + "_Intent");
-                inject = (Inject) finderClass.newInstance();
+                Class<?> finderClass = Class.forName(className + "_Builder");
+                inject = (Inject<android.view.View.OnCreateContextMenuListener>) finderClass.newInstance();
                 FINDER_MAP.put(className, inject);
             }
             inject.inject(fragment);

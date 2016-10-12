@@ -21,9 +21,9 @@ public class ArgExtraArrayIntField {
         ArgExtraArrayInt extra = mFieldElement.getAnnotation(ArgExtraArrayInt.class);
         key = extra.value();
 
-//        if (mResId == null) {
-//            throw new IllegalArgumentException(String.format("value() in %s for field %s is not valid !", BindView.class.getSimpleName(), mFieldElement.getSimpleName()));
-//        }
+        if ("".equals(key)) {
+            key = mFieldElement.getSimpleName().toString();
+        }
     }
 
     public Name getFieldName() {

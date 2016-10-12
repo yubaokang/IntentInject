@@ -24,10 +24,10 @@ allprojects {
 //添加
 ext {
     userOrg = 'ybk'
-    repoName = 'IntentInject'
+    repoName = 'maven'
     groupId = 'com.yubaokang'
-    publishVersion = 'v1.0.0'
-    //uploadName =''
+    publishVersion = '0.1.0'
+    uploadName = 'IntentInject'
     desc = 'A easy API to transmit bundle at activity and fragment'
     website = 'https://github.com/yubaokang/IntentInject'
     licences = ['Apache-2.0']
