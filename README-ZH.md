@@ -1,9 +1,9 @@
 # IntentInject
 A easy API of transmit bundle in activity and fragment
 
-[中文文档](https://github.com/yubaokang/IntentInject/blob/master/README-ZH.md)
+[English doc](https://github.com/yubaokang/IntentInject/blob/master/README-ZH.md)
 
-### dependencies：
+###引用：
 
 #### top-level build.gradle
 ```java
@@ -23,13 +23,13 @@ dependencies {
 }
 ```
 
-### how to use -- just like ButterKnife:
+###如何使用 --类似于ButterKnife:
 
-#### in Activity:
+#### 在Activity使用:
 ```java
 public class MainActivity extends AppCompatActivity {
     @Extra
-    String name;//"name"is the default key
+    String name;//这种情况"name"就是默认的key
     @Extra
     int age;
     
@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
     float price;
     @Extra("dou")
     double dou;
-    @Extra("test")//Test need to implements Parcelable or Serializable
+    @Extra("test")//Test 需要实现序列化 Parcelable或者Serializable都可以
     Test test;
     
     @ExtraArrayString("datas")
     ArrayList<String> datas;
-    @ExtraArrayParcelable("tests")
+    @ExtraArrayParcelable("tests")//Test 需要实现序列化 Parcelable或者Serializable都可以
     ArrayList<Test> tests;
     @ExtraArrayInt("ints")
     ArrayList<Integer> ints;
@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        IntentInject.inject(this);//add this line code
+        IntentInject.inject(this);//添加这行代码
         Toast.makeText(this, "name:" + name, Toast.LENGTH_LONG).show();
     }
 }
 ```
 
-Remember building the project to generate MainActivity_Builder class
+记住一定要执行编译，否者无法生成MainActivity_Builder类
 
 ```java
 public class SplashActivity extends AppCompatActivity {
@@ -65,13 +65,13 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        //transmit value and open MainActivity
+        //传值并且跳转到
         MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").start();
     }
 }
 ```
 
-#### in Fragment -- relative to Activity，just need to add "Arg"
+#### 在Fragment使用,相对于在Activity中的注解，前面都加上Arg
 ```java
 public class BlankFragment1 extends Fragment {
     @ArgExtra
@@ -84,13 +84,13 @@ public class BlankFragment1 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
-       IntentInject.inject(this);//add this line code
+       IntentInject.inject(this);//添加这行代码
        Toast.makeText(this, "name:" + name, Toast.LENGTH_LONG).show();
     }
 }
 ```
 
-create Fragment
+创建Fragment
 ```java
     BlankFragment1_Builder.builder().name("yubaokang").age("25").build();
 ```
