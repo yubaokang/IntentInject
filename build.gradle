@@ -26,11 +26,9 @@ ext {
     userOrg = 'ybk'
     repoName = 'maven'
     groupId = 'com.yubaokang'
-    publishVersion = '0.1.0'
+    publishVersion = '0.2.0'
     uploadName = 'IntentInject'
     desc = 'A easy API to transmit bundle at activity and fragment'
     website = 'https://github.com/yubaokang/IntentInject'
     licences = ['Apache-2.0']
 }
-
-//gradlew clean build bintrayUpload -PbintrayUser=yubaokang -PbintrayKey=2863150362b98f44962621237e94a8c3987db383 -PdryRun=false
