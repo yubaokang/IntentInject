@@ -1,1 +1,1 @@
-include ':app', ':intentinject-compiler', ':intentinject-api'
+include ':app', ':intentinject-api', ':intentinject-compiler'
