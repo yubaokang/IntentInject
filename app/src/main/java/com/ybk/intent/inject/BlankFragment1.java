@@ -1,19 +1,18 @@
 package com.ybk.intent.inject;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ybk.intent.inject.api.IntentInject;
 import com.ybk.intent.inject.compiler.annotation.ArgExtra;
 import com.ybk.intent.inject.compiler.annotation.ArgExtraArrayString;
-import com.ybk.intent.inject.api.IntentInject;
 
 import java.util.ArrayList;
 
-public class BlankFragment1 extends Fragment {
+public class BlankFragment1 extends BaseFragment {
     @ArgExtra
     String param1;
     @ArgExtra

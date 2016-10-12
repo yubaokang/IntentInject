@@ -54,7 +54,7 @@ public class ArgAnnotatedClass {
     }
 
     /**
-     * @return 生成Extras类MainActivity_Builder
+     * @return 生成 xxx_Builder
      */
     public JavaFile generateExtras() {
         List<MethodSpec.Builder> methods = new ArrayList<>();
@@ -89,19 +89,13 @@ public class ArgAnnotatedClass {
         MethodSpec.Builder builder = MethodSpec.methodBuilder("builder")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(ClassName.get("", "Builder"))
-                .addStatement("return new Builder(new $L())", TypeName.get(mClassElement.asType()));
+                .addStatement("return new Builder(new $T())", mClassElement.asType());
 
         //Builder
         MethodSpec.Builder injectConstructor = MethodSpec.constructorBuilder()
                 .addModifiers(Modifier.PUBLIC)
-                .addParameter(TypeUtil.FRAGMENT_V4, "fragment")
+                .addParameter(TypeName.get(mClassElement.asType()), "fragment")
                 .addStatement("super(fragment)");
-//        if (mClassElement.asType().toString().equals(TypeUtil.FRAGMENT_V4.toString())) {
-//            injectConstructor.addParameter(TypeUtil.FRAGMENT_V4, "fragment");
-//        } else {
-//            injectConstructor.addParameter(TypeUtil.FRAGMENT, "fragment");
-//        }
-//        injectConstructor.addStatement("super(fragment)");
         methods.add(injectConstructor);
 
         //extras
@@ -144,7 +138,7 @@ public class ArgAnnotatedClass {
 
         //Builder inner class
         TypeSpec.Builder inner = TypeSpec.classBuilder("Builder")
-                .superclass(TypeUtil.FRAGMENT_V4_BUILDER)
+                .superclass(ParameterizedTypeName.get(TypeUtil.FRAGMENT_BUILDER, TypeName.get(mClassElement.asType())))
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC);
         for (MethodSpec.Builder method : methods) {
             inner.addMethod(method.build());

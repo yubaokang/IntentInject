@@ -5,7 +5,7 @@ import com.squareup.javapoet.ClassName;
 public class TypeUtil {
     public static final ClassName INJECT = ClassName.get("com.ybk.intent.inject.api", "Inject");
     public static final ClassName INTENT_BUILDER = ClassName.get("com.ybk.intent.inject.api", "IntentBuilder");
-    public static final ClassName FRAGMENT_V4_BUILDER = ClassName.get("com.ybk.intent.inject.api", "FragmentV4Builder");
+    public static final ClassName FRAGMENT_BUILDER = ClassName.get("com.ybk.intent.inject.api", "FragmentBuilder");
     public static final ClassName INTENT = ClassName.get("android.content", "Intent");
     public static final ClassName BUNDLE = ClassName.get("android.os", "Bundle");
     public static final ClassName CONTEXT = ClassName.get("android.content", "Context");

@@ -50,15 +50,17 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         IntentInject.inject(this);
         Toast.makeText(this, "id:" + id +
-                "\naa:" + aa +
-                "\nbb:" + bb +
-                "\ndou:" + dou +
-                "\ntest:" + test.getName() +
-                "\ndatas:" + datas.get(0) +
-                "\ntests:" + tests.get(0).getName() +
-                "\nints:" + ints.get(0), Toast.LENGTH_LONG).show();
+                        "\naa:" + aa +
+                        "\nbb:" + bb +
+                        "\ndou:" + dou
+//                "\ntest:" + test.getName() +
+//                "\ndatas:" + datas.get(0) +
+//                "\ntests:" + tests.get(0).getName() +
+//                "\nints:" + ints.get(0)
+                , Toast.LENGTH_LONG).show();
         ArrayList<String> lists = new ArrayList<>();
         lists.add("fragment");
-        getSupportFragmentManager().beginTransaction().add(R.id.activity_main, BlankFragment1_Builder.builder().param1("a").param2("a2").list(lists).build()).commit();
+        BlankFragment1 blankFragment1 = BlankFragment1_Builder.builder().param1("a").param2("a2").list(lists).build();
+        getSupportFragmentManager().beginTransaction().add(R.id.activity_main, blankFragment1).commit();
     }
 }

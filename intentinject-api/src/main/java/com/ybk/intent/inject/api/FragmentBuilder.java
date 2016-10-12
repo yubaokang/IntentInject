@@ -15,16 +15,21 @@
  */
 package com.ybk.intent.inject.api;
 
+
 import android.support.v4.app.Fragment;
 
-public abstract class FragmentV4Builder extends BaseBundleBuilder<Fragment> {
+public abstract class FragmentBuilder<F> extends BaseBundleBuilder<F> {
 
-    public FragmentV4Builder(Fragment fragment) {
+    public FragmentBuilder(F fragment) {
         super(fragment);
     }
 
-    public Fragment build() {
-        i.setArguments(bundle);
+    public F build() {
+        if (i instanceof Fragment) {
+            ((Fragment) i).setArguments(bundle);
+        } else if (i instanceof android.app.Fragment) {
+            ((android.app.Fragment) i).setArguments(bundle);
+        }
         return i;
     }
 }

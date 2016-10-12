@@ -53,7 +53,7 @@ public class AnnotatedClass {
     }
 
     /**
-     * @return 生成Extras类MainActivity_Builder
+     * @return 生成 xxx_Builder
      */
     public JavaFile generateExtras() {
         List<MethodSpec.Builder> methods = new ArrayList<>();
