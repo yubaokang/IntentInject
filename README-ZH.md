@@ -1,5 +1,6 @@
 # IntentInject
-A easy API of transmit bundle in activity and fragment
+
+实现Activity或者Fragment 快速传递Bundle
 
 [English doc](https://github.com/yubaokang/IntentInject/blob/master/README-ZH.md)
 
