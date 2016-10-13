@@ -1,14 +1,14 @@
 package com.ybk.intent.inject.compiler;
 
 import com.google.auto.service.AutoService;
-import com.ybk.intent.inject.compiler.annotation.ArgExtra;
-import com.ybk.intent.inject.compiler.annotation.ArgExtraArrayInt;
-import com.ybk.intent.inject.compiler.annotation.ArgExtraArrayParcelable;
-import com.ybk.intent.inject.compiler.annotation.ArgExtraArrayString;
-import com.ybk.intent.inject.compiler.annotation.Extra;
-import com.ybk.intent.inject.compiler.annotation.ExtraArrayInt;
-import com.ybk.intent.inject.compiler.annotation.ExtraArrayParcelable;
-import com.ybk.intent.inject.compiler.annotation.ExtraArrayString;
+import com.ybk.intent.inject.annotation.ArgExtra;
+import com.ybk.intent.inject.annotation.ArgExtraArrayInt;
+import com.ybk.intent.inject.annotation.ArgExtraArrayParcelable;
+import com.ybk.intent.inject.annotation.ArgExtraArrayString;
+import com.ybk.intent.inject.annotation.Extra;
+import com.ybk.intent.inject.annotation.ExtraArrayInt;
+import com.ybk.intent.inject.annotation.ExtraArrayParcelable;
+import com.ybk.intent.inject.annotation.ExtraArrayString;
 
 import java.io.IOException;
 import java.util.HashMap;

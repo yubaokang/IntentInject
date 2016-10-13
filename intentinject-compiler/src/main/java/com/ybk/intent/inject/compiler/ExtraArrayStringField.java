@@ -1,6 +1,6 @@
 package com.ybk.intent.inject.compiler;
 
-import com.ybk.intent.inject.compiler.annotation.ExtraArrayString;
+import com.ybk.intent.inject.annotation.ExtraArrayString;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;

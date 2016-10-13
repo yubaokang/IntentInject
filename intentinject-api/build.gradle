@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'//添加
+//apply plugin: 'com.novoda.bintray-release'//添加
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -28,14 +28,14 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
 }
 //添加
-publish {
-    artifactId = 'intentinject-api'
-    userOrg = rootProject.userOrg
-    repoName = rootProject.repoName
-    groupId = rootProject.groupId
-    uploadName = rootProject.uploadName
-    publishVersion = rootProject.publishVersion
-    desc = rootProject.description
-    website = rootProject.website
-    licences = rootProject.licences
-}
+//publish {
+//    artifactId = 'intentinject-api'
+//    userOrg = rootProject.userOrg
+//    repoName = rootProject.repoName
+//    groupId = rootProject.groupId
+//    uploadName = rootProject.uploadName
+//    publishVersion = rootProject.publishVersion
+//    desc = rootProject.description
+//    website = rootProject.website
+//    licences = rootProject.licences
+//}

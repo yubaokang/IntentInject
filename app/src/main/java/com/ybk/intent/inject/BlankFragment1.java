@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.ybk.intent.inject.api.IntentInject;
-import com.ybk.intent.inject.compiler.annotation.ArgExtra;
-import com.ybk.intent.inject.compiler.annotation.ArgExtraArrayString;
+import com.ybk.intent.inject.annotation.ArgExtra;
+import com.ybk.intent.inject.annotation.ArgExtraArrayString;
 
 import java.util.ArrayList;
 

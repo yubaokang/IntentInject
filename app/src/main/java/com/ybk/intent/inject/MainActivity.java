@@ -5,10 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ybk.intent.inject.compiler.annotation.Extra;
-import com.ybk.intent.inject.compiler.annotation.ExtraArrayInt;
-import com.ybk.intent.inject.compiler.annotation.ExtraArrayParcelable;
-import com.ybk.intent.inject.compiler.annotation.ExtraArrayString;
+import com.ybk.intent.inject.annotation.Extra;
+import com.ybk.intent.inject.annotation.ExtraArrayInt;
+import com.ybk.intent.inject.annotation.ExtraArrayParcelable;
+import com.ybk.intent.inject.annotation.ExtraArrayString;
 import com.ybk.intent.inject.api.IntentInject;
 
 import java.util.ArrayList;

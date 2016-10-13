@@ -28,8 +28,8 @@ public class SplashActivity extends AppCompatActivity {
         ArrayList<Integer> ints = new ArrayList<>();
         ints.add(11);
         MainActivity_Builder.intent(this)
-//                .aa(111)
-//                .dou(1.2)
+                .aa(111)
+                .dou(1.2)
 //                .id("idididid")
 //                .test(test)
 //                .datas(datas)
