@@ -22,7 +22,7 @@ publish {
     userOrg = rootProject.userOrg
     repoName = rootProject.repoName
     groupId = rootProject.groupId
-    uploadName = rootProject.uploadName
+    uploadName = 'IntentInject-compiler'
     publishVersion = rootProject.publishVersion
     desc = rootProject.description
     website = rootProject.website

@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ybk.intent.inject.api.IntentInject;
 import com.ybk.intent.inject.compiler.annotation.Extra;
 import com.ybk.intent.inject.compiler.annotation.ExtraArrayInt;
 import com.ybk.intent.inject.compiler.annotation.ExtraArrayParcelable;
 import com.ybk.intent.inject.compiler.annotation.ExtraArrayString;
-import com.ybk.intent.inject.api.IntentInject;
 
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Extra("dou")
     double dou;
-
+    //
     @Extra("test")
     Test test;
 
@@ -49,14 +49,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         IntentInject.inject(this);
-        Toast.makeText(this, "id:" + id +
+        Toast.makeText(this,
+                "id:" + id +
                         "\naa:" + aa +
                         "\nbb:" + bb +
-                        "\ndou:" + dou
-//                "\ntest:" + test.getName() +
-//                "\ndatas:" + datas.get(0) +
-//                "\ntests:" + tests.get(0).getName() +
-//                "\nints:" + ints.get(0)
+                        "\ndou:" + dou +
+                        "\ntest:" + test.getName() +
+                        "\ndatas:" + datas.get(0) +
+                        "\ntests:" + tests.get(0).getName() +
+                        "\nints:" + ints.get(0)
                 , Toast.LENGTH_LONG).show();
         ArrayList<String> lists = new ArrayList<>();
         lists.add("fragment");
