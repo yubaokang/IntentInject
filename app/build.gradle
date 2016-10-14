@@ -28,8 +28,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor  'com.jakewharton:butterknife-compiler:8.4.0'
-    compile project(':intentinject-compiler')
+    apt  'com.jakewharton:butterknife-compiler:8.4.0'
+    apt project(':intentinject-compiler')
     compile project(':intentinject-api')
     compile project(':intentinject-annotation')
 }
