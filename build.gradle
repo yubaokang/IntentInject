@@ -25,7 +25,7 @@ allprojects {
 ext {
     userOrg = 'ybk'
     repoName = 'maven'
-    groupId = 'com.yubaokang'
+    groupId = 'com.ybk.intent.inject'
     publishVersion = '0.2.0'
     uploadName = 'IntentInject'
     desc = 'A easy API to transmit bundle at activity and fragment'

@@ -1,4 +1,4 @@
-package com.ybk.intent.inject.compiler.annotation;
+package com.ybk.intent.inject.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
-public @interface ArgExtra {
+public @interface ExtraArrayString {
     String value() default "";
 }

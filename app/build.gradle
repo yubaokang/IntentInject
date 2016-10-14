@@ -31,4 +31,5 @@ dependencies {
     annotationProcessor  'com.jakewharton:butterknife-compiler:8.4.0'
     compile project(':intentinject-compiler')
     compile project(':intentinject-api')
+    compile project(':intentinject-annotation')
 }

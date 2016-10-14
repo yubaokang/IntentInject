@@ -1,1 +1,1 @@
-include ':app', ':intentinject-api', ':intentinject-compiler'
+include ':app', ':intentinject-api', ':intentinject-compiler', ':intentinject-annotation'
