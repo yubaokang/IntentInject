@@ -1,11 +1,11 @@
 apply plugin: 'java'
-apply plugin: 'com.novoda.bintray-release'//添加
-
+apply plugin: 'bintray-release'//添加
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.squareup:javapoet:1.7.0'
+    compile project(':intentinject-annotation')
     compile 'com.google.auto.service:auto-service:1.0-rc2'
-    compile project(path: ':intentinject-annotation')
+    compile 'com.squareup:javapoet:1.7.0'
 }
 
 javadoc {
@@ -21,13 +21,10 @@ javadoc {
 publish {
     artifactId = 'intentinject-compiler'
     userOrg = rootProject.userOrg
-    repoName = rootProject.repoName
     groupId = rootProject.groupId
-    uploadName = 'IntentInject-compiler'
+    uploadName = rootProject.uploadName
     publishVersion = rootProject.publishVersion
-    desc = rootProject.description
+    description = rootProject.description
     website = rootProject.website
     licences = rootProject.licences
 }
-targetCompatibility = '1.7'
-sourceCompatibility = '1.7'

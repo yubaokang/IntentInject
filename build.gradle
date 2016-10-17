@@ -24,13 +24,12 @@ allprojects {
 //添加
 ext {
     userOrg = 'ybk'
-    repoName = 'maven'
     groupId = 'com.ybk.intent.inject'
-    publishVersion = '0.3.0'
     uploadName = 'IntentInject'
-    desc = 'A easy API to transmit bundle at activity and fragment'
+    publishVersion = '0.4.0'
+    description = 'A easy API of transmit bundle in activity or fragment.'
     website = 'https://github.com/yubaokang/IntentInject'
     licences = ['Apache-2.0']
 }
 
-//gradlew clean build bintrayUpload -PbintrayUser=yubaokang -PbintrayKey=******** -PdryRun=false
+//gradlew clean build bintrayUpload -PbintrayUser=yubaokang -PbintrayKey=2863150362b98f44962621237e94a8c3987db383 -PdryRun=false
