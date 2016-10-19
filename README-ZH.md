@@ -8,6 +8,12 @@
 
 #### top-level build.gradle
 ```java
+allprojects {
+    repositories {
+        jcenter()
+        mavenLocal()
+    }
+}
 dependencies {
     classpath 'com.android.tools.build:gradle:2.2.0'
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' 
@@ -19,8 +25,8 @@ dependencies {
 apply plugin: 'android-apt'
 
 dependencies {
-    compile 'com.yubaokang:intentinject-api:0.2.0'
-    apt 'com.yubaokang:intentinject-compiler:0.2.0'
+    compile 'com.ybk.intent.inject:intentinject-api:0.4.0'
+    apt 'com.ybk.intent.inject:intentinject-compiler:0.4.0'
 }
 ```
 
