@@ -11,11 +11,11 @@
 allprojects {
     repositories {
         jcenter()
-        mavenLocal()
+        maven { url "https://jitpack.io" }
     }
 }
 dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.0'
+    classpath 'com.android.tools.build:gradle:2.2.2'
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' 
 }
 ```
