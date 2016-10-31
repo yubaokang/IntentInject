@@ -11,7 +11,7 @@ A easy API of transmit bundle in activity or fragment
 allprojects {
     repositories {
         jcenter()
-        mavenLocal()
+        maven { url "https://jitpack.io" }
     }
 }
 dependencies {
