@@ -1,6 +1,6 @@
 package com.ybk.intent.inject.compiler;
 
-import com.ybk.intent.inject.compiler.annotation.ArgExtraArrayParcelable;
+import com.ybk.intent.inject.annotation.ArgExtraArrayParcelable;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;

@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'bintray-release'//添加
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+//添加
+publish {
+    artifactId = 'intentinject-annotation'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    uploadName = rootProject.uploadName
+    publishVersion = rootProject.publishVersion
+    description = rootProject.description
+    website = rootProject.website
+    licences = rootProject.licences
+}
