@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'bintray-release'//添加
-
+//apply plugin: 'bintray-release'//添加
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.yubaokang'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -29,44 +30,44 @@ dependencies {
     compile project(':intentinject-annotation')
 }
 
-// Jar
-task androidJar(type: Jar) {
-    dependsOn assemble
-    group 'Build'
-    description 'blah blah'
-    from zipTree(
-            'build/intermediates/bundles/release/classes.jar')
-    from zipTree(
-            '../intentinject-compiler/build/libs/intentinject-compiler.jar')
-    from zipTree(
-            '../intentinject-annotation/build/libs/intentinject-annotation.jar')
-}
-
-// javadoc tasks
-android.libraryVariants.all { variant ->
-    task("javadoc${variant.name.capitalize()}", type: Javadoc) {
-        description "Generates Javadoc for $variant.name."
-        group 'Docs'
-        source = variant.javaCompile.source
-        source "../intentinject-annotation/src/main/java"
-        exclude '**/BuildConfig.java'
-        exclude '**/R.java'
-    }
-}
-//添加
-publish {
-    artifactId = 'intentinject-api'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    uploadName = rootProject.uploadName
-    publishVersion = rootProject.publishVersion
-    description = rootProject.description
-    website = rootProject.website
-    licences = rootProject.licences
-}
-
-task copyJar(type: Copy) {
-    from('build/libs/intentinject-api.jar')
-    into('../output/')
-    rename('intentinject-api.jar', 'intentinject.jar')
-}
+//// Jar
+//task androidJar(type: Jar) {
+//    dependsOn assemble
+//    group 'Build'
+//    description 'blah blah'
+//    from zipTree(
+//            'build/intermediates/bundles/release/classes.jar')
+//    from zipTree(
+//            '../intentinject-compiler/build/libs/intentinject-compiler.jar')
+//    from zipTree(
+//            '../intentinject-annotation/build/libs/intentinject-annotation.jar')
+//}
+//
+//// javadoc tasks
+//android.libraryVariants.all { variant ->
+//    task("javadoc${variant.name.capitalize()}", type: Javadoc) {
+//        description "Generates Javadoc for $variant.name."
+//        group 'Docs'
+//        source = variant.javaCompile.source
+//        source "../intentinject-annotation/src/main/java"
+//        exclude '**/BuildConfig.java'
+//        exclude '**/R.java'
+//    }
+//}
+////添加
+//publish {
+//    artifactId = 'intentinject-api'
+//    userOrg = rootProject.userOrg
+//    groupId = rootProject.groupId
+//    uploadName = rootProject.uploadName
+//    publishVersion = rootProject.publishVersion
+//    description = rootProject.description
+//    website = rootProject.website
+//    licences = rootProject.licences
+//}
+//
+//task copyJar(type: Copy) {
+//    from('build/libs/intentinject-api.jar')
+//    into('../output/')
+//    rename('intentinject-api.jar', 'intentinject.jar')
+//}

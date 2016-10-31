@@ -1,16 +1,17 @@
 apply plugin: 'java'
-apply plugin: 'bintray-release'//添加
+//apply plugin: 'bintray-release'//添加
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
-
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.yubaokang'
 //添加
-publish {
-    artifactId = 'intentinject-annotation'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    uploadName = rootProject.uploadName
-    publishVersion = rootProject.publishVersion
-    description = rootProject.description
-    website = rootProject.website
-    licences = rootProject.licences
-}
+//publish {
+//    artifactId = 'intentinject-annotation'
+//    userOrg = rootProject.userOrg
+//    groupId = rootProject.groupId
+//    uploadName = rootProject.uploadName
+//    publishVersion = rootProject.publishVersion
+//    description = rootProject.description
+//    website = rootProject.website
+//    licences = rootProject.licences
+//}

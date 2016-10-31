@@ -5,7 +5,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'com.novoda:bintray-release:0.3.4'//添加
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5' // Add this line
+        //        classpath 'com.novoda:bintray-release:0.3.4'//添加
     }
 }
 

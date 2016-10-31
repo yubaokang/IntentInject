@@ -1,7 +1,7 @@
 apply plugin: 'java'
-apply plugin: 'bintray-release'//添加
-targetCompatibility = '1.7'
-sourceCompatibility = '1.7'
+//apply plugin: 'bintray-release'//添加
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.yubaokang'
 dependencies {
     compile project(':intentinject-annotation')
     compile 'com.google.auto.service:auto-service:1.0-rc2'
@@ -18,7 +18,7 @@ javadoc {
 }
 
 //添加
-publish {
+/*publish {
     artifactId = 'intentinject-compiler'
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId
@@ -27,4 +27,6 @@ publish {
     description = rootProject.description
     website = rootProject.website
     licences = rootProject.licences
-}
+}*/
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
