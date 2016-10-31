@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.1'
+        classpath 'com.android.tools.build:gradle:2.2.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.novoda:bintray-release:0.3.4'//添加
     }
@@ -26,7 +26,7 @@ ext {
     userOrg = 'ybk'
     groupId = 'com.ybk.intent.inject'
     uploadName = 'IntentInject'
-    publishVersion = '0.4.0'
+    publishVersion = '1.0.1'
     description = 'A easy API of transmit bundle in activity or fragment.'
     website = 'https://github.com/yubaokang/IntentInject'
     licences = ['Apache-2.0']
