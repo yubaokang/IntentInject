@@ -26,8 +26,8 @@ apply plugin: 'android-apt'
 
 dependencies {
     ...
-    compile  'com.github.yubaokang.IntentInject:intentinject-api:0.4.0'
-    apt  'com.github.yubaokang.IntentInject:intentinject-compiler:0.4.0'
+     compile  'com.github.yubaokang.IntentInject:intentinject-api:1.0.2'
+     apt  'com.github.yubaokang.IntentInject:intentinject-compiler:1.0.2'
 }
 ```
 
