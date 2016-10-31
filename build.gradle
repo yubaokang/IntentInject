@@ -6,7 +6,6 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.2.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5' // Add this line
-        //        classpath 'com.novoda:bintray-release:0.3.4'//添加
     }
 }
 
@@ -21,17 +20,6 @@ allprojects {
             links "http://docs.oracle.com/javase/7/docs/api"
         }
     }
-}
-//添加
-ext {
-    userOrg = 'ybk'
-    repoName = 'maven'
-    groupId = 'com.ybk'
-    publishVersion = '1.0.1'
-    uploadName = 'IntentInject'
-    desc = 'A easy API for transmit bundle in activity and fragment'
-    website = 'https://github.com/yubaokang/IntentInject'
-    licences = ['Apache-2.0']
 }
 
 //gradlew clean build bintrayUpload -PbintrayUser=yubaokang -PbintrayKey=******** -PdryRun=false

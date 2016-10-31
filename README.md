@@ -10,12 +10,12 @@ A easy API of transmit bundle in activity or fragment
 ```java
 allprojects {
     repositories {
-        jcenter()
+        ...
         maven { url "https://jitpack.io" }
     }
 }
 dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.0'
+    ...
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' 
 }
 ```
@@ -25,6 +25,7 @@ dependencies {
 apply plugin: 'android-apt'
 
 dependencies {
+    ...
     compile  'com.github.yubaokang.IntentInject:intentinject-api:0.4.0'
     apt  'com.github.yubaokang.IntentInject:intentinject-compiler:0.4.0'
 }
