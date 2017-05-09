@@ -25,11 +25,25 @@ public abstract class IntentBuilder extends BaseBundleBuilder<Context> {
     }
 
     public void start() {
-        intent.putExtras(bundle);
+        getIntent();
         i.startActivity(intent);
     }
 
+    /**
+     * the start word was used error,  replace {@link #startForResult}
+     * @param requestCode
+     */
+    @Deprecated
     public void starForResult(int requestCode) {
+        if (i instanceof Activity) {
+            intent.putExtras(bundle);
+            ((Activity) i).startActivityForResult(intent, requestCode);
+        } else {
+            throw new IllegalArgumentException("Context cannot startActivityForResult except Activity");
+        }
+    }
+
+    public void startActivityForResult(int requestCode) {
         if (i instanceof Activity) {
             intent.putExtras(bundle);
             ((Activity) i).startActivityForResult(intent, requestCode);

@@ -1,7 +1,6 @@
 package com.ybk.intent.inject;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +29,7 @@ public class MainActivity extends BaseActivity {
 
     @Extra("dou")
     double dou;
-    //
+
     @Extra("test")
     Test test;
 
@@ -47,6 +46,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        IntentInject.inject(this);
         ButterKnife.bind(this);
         Toast.makeText(this,
                 "id:" + id +

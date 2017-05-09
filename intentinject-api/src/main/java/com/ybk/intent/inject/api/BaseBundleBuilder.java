@@ -19,6 +19,11 @@ public class BaseBundleBuilder<I> {
     protected Intent intent;
     protected Bundle bundle;
 
+    public Intent getIntent() {
+        intent.putExtras(bundle);
+        return intent;
+    }
+
     public BaseBundleBuilder(I i, Class<?> clazz) {
         this.i = i;
         intent = new Intent((Context) i, clazz);
