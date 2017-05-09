@@ -26,6 +26,8 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
+        System.out.print("--------------------------->>>>>");
+
     }
 
     @OnClick(R.id.button)
@@ -38,7 +40,7 @@ public class SplashActivity extends BaseActivity {
         ArrayList<Integer> ints = new ArrayList<>();
         ints.add(11);
 
-        Intent intent = MainActivity_Builder.intent(this).aa(111).dou(1.2).id("idididid").test(test).datas(datas).tests(tests).ints(ints).getIntent();
+        Intent intent = MainActivity_Builder.intent(this).aa(111).dou(1.2).id("idididid").test(test).datas(datas).tests(tests).arrayList(ints).getIntent();
         startActivity(intent);
     }
 }

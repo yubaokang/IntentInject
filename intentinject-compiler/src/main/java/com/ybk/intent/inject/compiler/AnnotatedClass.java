@@ -101,15 +101,39 @@ public class AnnotatedClass {
         methods.add(injectConstructor);
 
         //extras
+//        for (ExtraField field : extras) {
+//            MethodSpec.Builder key = MethodSpec.methodBuilder(String.valueOf(field.getFieldName()))
+//                    .addModifiers(Modifier.PUBLIC)
+//                    .addParameter(ClassName.get(field.getFieldType()), String.valueOf(field.getFieldName()))
+//                    .returns(ClassName.get("", "Builder"))
+//                    .addStatement("super.extra($S,$L)", field.getFieldName().toString(), field.getFieldName().toString())
+//                    .addStatement("return this");
+//            methods.add(key);
+//        }
+        /////////////////////////////////////////////////////////////////////
+        //extras
         for (ExtraField field : extras) {
             MethodSpec.Builder key = MethodSpec.methodBuilder(String.valueOf(field.getFieldName()))
                     .addModifiers(Modifier.PUBLIC)
                     .addParameter(ClassName.get(field.getFieldType()), String.valueOf(field.getFieldName()))
-                    .returns(ClassName.get("", "Builder"))
-                    .addStatement("super.extra($S,$L)", field.getFieldName().toString(), field.getFieldName().toString())
-                    .addStatement("return this");
+                    .returns(ClassName.get("", "Builder"));
+
+            if (field.getFieldType().toString().equals("java.util.ArrayList")) {
+                if (field.getFieldType().getClass().toString().equals("java.lang.String")) {
+                    key.addStatement("super.putStringArrayList($S,$L)", field.getFieldName().toString(), field.getFieldName().toString());
+                } else if (field.getFieldType().getKind().getDeclaringClass().getClass().toString().equals("java.lang.Integer")) {
+                    key.addStatement("super.putIntegerArrayList($S,$L)", field.getFieldName().toString(), field.getFieldName().toString());
+                } else {
+                    key.addStatement("super.putParcelableArrayList($S,$L)", field.getFieldName().toString(), field.getFieldName().toString());
+                }
+            } else {
+                key.addStatement("super.extra($S,$L)", field.getFieldName().toString(), field.getFieldName().toString());
+            }
+            key.addStatement("return this");
             methods.add(key);
         }
+        /////////////////////////////////////////////////////////////////////
+
         for (ExtraArrayStringField field : extrasArrayStr) {
             MethodSpec.Builder key = MethodSpec.methodBuilder(String.valueOf(field.getFieldName()))
                     .addModifiers(Modifier.PUBLIC)

@@ -79,6 +79,10 @@ public class ViewFinderProcesser extends AbstractProcessor {
             error(e.getMessage());
             return true;
         }
+        System.out.print("--------------------------->>>>>");
+        System.out.print("--------------------------->>>>>");
+        System.out.print("--------------------------->>>>>");
+        System.out.print("--------------------------->>>>>");
         for (AnnotatedClass annotatedClass : mAnnotatedClassMap.values()) {
             try {
                 info("Generating file for %s", annotatedClass.getFullClassName());

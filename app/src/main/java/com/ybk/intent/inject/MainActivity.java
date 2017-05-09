@@ -1,11 +1,11 @@
 package com.ybk.intent.inject;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ybk.intent.inject.annotation.Extra;
-import com.ybk.intent.inject.annotation.ExtraArrayInt;
 import com.ybk.intent.inject.annotation.ExtraArrayParcelable;
 import com.ybk.intent.inject.annotation.ExtraArrayString;
 
@@ -38,14 +38,17 @@ public class MainActivity extends BaseActivity {
     @ExtraArrayParcelable("tests")
     ArrayList<Test> tests;
 
-    @ExtraArrayInt("ints")
-    ArrayList<Integer> ints;
+    @Extra("ints")
+    ArrayList<Integer> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Log.i("--------->>", arrayList.getClass().toString());
+
+
         Toast.makeText(this,
                 "id:" + id +
                         "\naa:" + aa +
@@ -54,7 +57,7 @@ public class MainActivity extends BaseActivity {
                         "\ntest:" + test.getName() +
                         "\ndatas:" + datas.get(0) +
                         "\ntests:" + tests.get(0).getName() +
-                        "\nints:" + ints.get(0)
+                        "\nints:" + arrayList.get(0)
                 , Toast.LENGTH_LONG).show();
         ArrayList<String> lists = new ArrayList<>();
         lists.add("fragment");
