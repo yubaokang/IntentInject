@@ -8,7 +8,6 @@ import com.ybk.intent.inject.annotation.Extra;
 import com.ybk.intent.inject.annotation.ExtraArrayInt;
 import com.ybk.intent.inject.annotation.ExtraArrayParcelable;
 import com.ybk.intent.inject.annotation.ExtraArrayString;
-import com.ybk.intent.inject.api.IntentInject;
 
 import java.util.ArrayList;
 
@@ -46,7 +45,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        IntentInject.inject(this);
         ButterKnife.bind(this);
         Toast.makeText(this,
                 "id:" + id +

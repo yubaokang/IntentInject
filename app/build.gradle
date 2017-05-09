@@ -24,8 +24,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
-
     annotationProcessor project(':intentinject-compiler')
     compile project(':intentinject-api')
     compile project(':intentinject-annotation')

@@ -30,7 +30,7 @@ public abstract class IntentBuilder extends BaseBundleBuilder<Context> {
     }
 
     /**
-     * the start word was used error,  replace {@link #startForResult}
+     * the start word was used error,  replace {@link #startActivityForResult}
      * @param requestCode
      */
     @Deprecated
