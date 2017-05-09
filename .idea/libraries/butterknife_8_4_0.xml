@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="butterknife-8.4.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.4.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.4.0/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/a0c778e7e307d456472d74080fef7d54a3c80a9c/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/a0c778e7e307d456472d74080fef7d54a3c80a9c/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

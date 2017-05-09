@@ -22,7 +22,7 @@ public class IntentInject {
             }
             inject.inject(activity);
         } catch (Exception e) {
-            throw new RuntimeException("Unable to inject for " + className, e);
+//            throw new RuntimeException("Unable to inject for " + className, e);
         }
     }
 
@@ -40,7 +40,7 @@ public class IntentInject {
             }
             inject.inject(fragment);
         } catch (Exception e) {
-            throw new RuntimeException("Unable to inject for " + className, e);
+//            throw new RuntimeException("Unable to inject for " + className, e);
         }
     }
 
@@ -58,7 +58,7 @@ public class IntentInject {
             }
             inject.inject(fragment);
         } catch (Exception e) {
-            throw new RuntimeException("Unable to inject for " + className, e);
+//            throw new RuntimeException("Unable to inject for " + className, e);
         }
     }
 }

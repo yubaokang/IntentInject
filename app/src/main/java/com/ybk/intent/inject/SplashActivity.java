@@ -3,13 +3,24 @@ package com.ybk.intent.inject;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.ybk.intent.inject.annotation.Extra;
+import com.ybk.intent.inject.api.IntentInject;
+
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
+
+    @Extra
+    String  aa;
+    @Extra
+    Integer sss;
+
+    @Extra
+    Integer qqqqqq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

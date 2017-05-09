@@ -14,10 +14,10 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
-dependencies {
+~~dependencies {
     ...
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' 
-}
+}~~
 ```
 
 #### module build.gradle
@@ -27,7 +27,7 @@ apply plugin: 'android-apt'
 dependencies {
     ...
      compile  'com.github.yubaokang.IntentInject:intentinject-api:1.0.2'
-     apt  'com.github.yubaokang.IntentInject:intentinject-compiler:1.0.2'
+     annotationProcessor  'com.github.yubaokang.IntentInject:intentinject-compiler:1.0.2'
 }
 ```
 
