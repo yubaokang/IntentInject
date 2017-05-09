@@ -21,8 +21,8 @@ allprojects {
 
 dependencies {
     ...
-     compile  'com.github.yubaokang.IntentInject:intentinject-api:1.0.2'
-     annotationProcessor  'com.github.yubaokang.IntentInject:intentinject-compiler:1.0.2'
+       compile  'com.github.yubaokang.IntentInject:intentinject-api:1.2.4'
+        annotationProcessor  'com.github.yubaokang.IntentInject:intentinject-compiler:1.2.4'
 }
 ```
 
