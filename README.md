@@ -14,15 +14,10 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
-~~dependencies {
-    ...
-    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' 
-}~~
 ```
 
 #### module build.gradle
 ```java
-apply plugin: 'android-apt'
 
 dependencies {
     ...
@@ -75,6 +70,11 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         //transmit value and open MainActivity
         MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").start();
+        //MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").startActivityForResult(111);//使用startActivityForResult
+
+        //custom
+        //Intent intent=MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").getIntent();
+        //startActivity(intent);
     }
 }
 ```

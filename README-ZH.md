@@ -14,20 +14,15 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
-dependencies {
-    ...
-    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' 
-}
 ```
 
 #### module build.gradle
 ```java
-apply plugin: 'android-apt'
 
 dependencies {
     ...
     compile  'com.github.yubaokang.IntentInject:intentinject-api:1.0.2'
-    apt  'com.github.yubaokang.IntentInject:intentinject-compiler:1.0.2'
+    annotationProcessor  'com.github.yubaokang.IntentInject:intentinject-compiler:1.0.2'
 }
 ```
 
@@ -75,6 +70,11 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         //传值并且跳转到
         MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").start();
+        //MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").startActivityForResult(111);//使用startActivityForResult
+
+        //自定义
+        //Intent intent=MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").getIntent();
+        //startActivity(intent);
     }
 }
 ```
