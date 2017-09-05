@@ -38,4 +38,8 @@ public class ExtraField {
     public TypeMirror getFieldType() {
         return mFieldElement.asType();
     }
+
+    public VariableElement getmFieldElement() {
+        return mFieldElement;
+    }
 }

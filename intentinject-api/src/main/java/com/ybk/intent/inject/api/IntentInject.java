@@ -29,6 +29,13 @@ public class IntentInject {
         _inject(fragment);
     }
 
+    /**
+     * @param object 在任何Object中使用
+     */
+    public static void inject(Object object) {
+        _inject(object);
+    }
+
     private static void _inject(Object host) {
         String className = host.getClass().getName();
         try {

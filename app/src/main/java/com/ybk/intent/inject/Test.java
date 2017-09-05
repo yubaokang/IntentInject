@@ -32,14 +32,11 @@ public class Test implements Parcelable {
         dest.writeString(this.name);
     }
 
-    public Test() {
-    }
-
     protected Test(Parcel in) {
         this.name = in.readString();
     }
 
-    public static final Creator<Test> CREATOR = new Creator<Test>() {
+    public static final Parcelable.Creator<Test> CREATOR = new Parcelable.Creator<Test>() {
         @Override
         public Test createFromParcel(Parcel source) {
             return new Test(source);

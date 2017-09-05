@@ -1,0 +1,7 @@
+1:chmod +x gradlew
+2:./gradlew --daemon     //开启守护进程
+//3：./gradlew clean assembleDebug
+4：./gradlew assembleDebug 运行构建
+
+debug
+http://blog.csdn.net/worst_hacker/article/details/71158250

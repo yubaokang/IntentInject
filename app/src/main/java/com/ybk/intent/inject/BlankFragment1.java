@@ -6,9 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ybk.intent.inject.api.IntentInject;
 import com.ybk.intent.inject.annotation.ArgExtra;
-import com.ybk.intent.inject.annotation.ArgExtraArrayString;
+import com.ybk.intent.inject.api.IntentInject;
 
 import java.util.ArrayList;
 
@@ -17,7 +16,7 @@ public class BlankFragment1 extends BaseFragment {
     String param1;
     @ArgExtra
     String param2;
-    @ArgExtraArrayString("list")
+    @ArgExtra("list")
     ArrayList<String> list;
 
     @Override

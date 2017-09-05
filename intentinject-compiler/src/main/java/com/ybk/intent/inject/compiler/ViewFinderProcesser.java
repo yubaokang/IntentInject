@@ -6,9 +6,6 @@ import com.ybk.intent.inject.annotation.ArgExtraArrayInt;
 import com.ybk.intent.inject.annotation.ArgExtraArrayParcelable;
 import com.ybk.intent.inject.annotation.ArgExtraArrayString;
 import com.ybk.intent.inject.annotation.Extra;
-import com.ybk.intent.inject.annotation.ExtraArrayInt;
-import com.ybk.intent.inject.annotation.ExtraArrayParcelable;
-import com.ybk.intent.inject.annotation.ExtraArrayString;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -50,13 +47,7 @@ public class ViewFinderProcesser extends AbstractProcessor {
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> types = new LinkedHashSet<>();
         types.add(Extra.class.getCanonicalName());
-        types.add(ExtraArrayString.class.getCanonicalName());
-        types.add(ExtraArrayInt.class.getCanonicalName());
-        types.add(ExtraArrayParcelable.class.getCanonicalName());
         types.add(ArgExtra.class.getCanonicalName());
-        types.add(ArgExtraArrayString.class.getCanonicalName());
-        types.add(ArgExtraArrayInt.class.getCanonicalName());
-        types.add(ArgExtraArrayParcelable.class.getCanonicalName());
         return types;
     }
 
@@ -79,10 +70,6 @@ public class ViewFinderProcesser extends AbstractProcessor {
             error(e.getMessage());
             return true;
         }
-        System.out.print("--------------------------->>>>>");
-        System.out.print("--------------------------->>>>>");
-        System.out.print("--------------------------->>>>>");
-        System.out.print("--------------------------->>>>>");
         for (AnnotatedClass annotatedClass : mAnnotatedClassMap.values()) {
             try {
                 info("Generating file for %s", annotatedClass.getFullClassName());
@@ -111,21 +98,6 @@ public class ViewFinderProcesser extends AbstractProcessor {
             ExtraField field = new ExtraField(element);
             annotatedClass.addField(field);
         }
-        for (Element element : roundEnv.getElementsAnnotatedWith(ExtraArrayString.class)) {
-            AnnotatedClass annotatedClass = getAnnotatedClass(element);
-            ExtraArrayStringField field = new ExtraArrayStringField(element);
-            annotatedClass.addField(field);
-        }
-        for (Element element : roundEnv.getElementsAnnotatedWith(ExtraArrayInt.class)) {
-            AnnotatedClass annotatedClass = getAnnotatedClass(element);
-            ExtraArrayIntField field = new ExtraArrayIntField(element);
-            annotatedClass.addField(field);
-        }
-        for (Element element : roundEnv.getElementsAnnotatedWith(ExtraArrayParcelable.class)) {
-            AnnotatedClass annotatedClass = getAnnotatedClass(element);
-            ExtraArrayParcelableField field = new ExtraArrayParcelableField(element);
-            annotatedClass.addField(field);
-        }
     }
 
     //fragment
@@ -134,21 +106,6 @@ public class ViewFinderProcesser extends AbstractProcessor {
             ArgAnnotatedClass argAnnotatedClass = getArgAnnotatedClass(element);
             ArgExtraField argExtraField = new ArgExtraField(element);
             argAnnotatedClass.addField(argExtraField);
-        }
-        for (Element element : roundEnv.getElementsAnnotatedWith(ArgExtraArrayString.class)) {
-            ArgAnnotatedClass annotatedClass = getArgAnnotatedClass(element);
-            ArgExtraArrayStringField field = new ArgExtraArrayStringField(element);
-            annotatedClass.addField(field);
-        }
-        for (Element element : roundEnv.getElementsAnnotatedWith(ArgExtraArrayInt.class)) {
-            ArgAnnotatedClass annotatedClass = getArgAnnotatedClass(element);
-            ArgExtraArrayIntField field = new ArgExtraArrayIntField(element);
-            annotatedClass.addField(field);
-        }
-        for (Element element : roundEnv.getElementsAnnotatedWith(ArgExtraArrayParcelable.class)) {
-            ArgAnnotatedClass annotatedClass = getArgAnnotatedClass(element);
-            ArgExtraArrayParcelableField field = new ArgExtraArrayParcelableField(element);
-            annotatedClass.addField(field);
         }
     }
 

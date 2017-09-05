@@ -13,4 +13,5 @@ public class TypeUtil {
     public static final ClassName ACTIVITY = ClassName.get("android.app", "Activity");
     public static final ClassName FRAGMENT_V4 = ClassName.get("android.support.v4.app", "Fragment");
     public static final ClassName FRAGMENT = ClassName.get("android.app", "Fragment");
+    public static final ClassName PARCELABLE = ClassName.get("android.os", "Parcelable");
 }

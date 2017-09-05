@@ -18,17 +18,11 @@ public class ArgAnnotatedClass {
 
     public TypeElement mClassElement;
     public List<ArgExtraField> extras;
-    public List<ArgExtraArrayStringField> extrasArrayStr;
-    public List<ArgExtraArrayIntField> extrasArrayInt;
-    public List<ArgExtraArrayParcelableField> extrasArrayPar;
     public Elements mElementUtils;
 
     public ArgAnnotatedClass(TypeElement classElement, Elements elementUtils) {
         this.mClassElement = classElement;
         this.extras = new ArrayList<>();
-        this.extrasArrayStr = new ArrayList<>();
-        this.extrasArrayInt = new ArrayList<>();
-        this.extrasArrayPar = new ArrayList<>();
         this.mElementUtils = elementUtils;
     }
 
@@ -38,18 +32,6 @@ public class ArgAnnotatedClass {
 
     public void addField(ArgExtraField field) {
         extras.add(field);
-    }
-
-    public void addField(ArgExtraArrayStringField field) {
-        extrasArrayStr.add(field);
-    }
-
-    public void addField(ArgExtraArrayIntField field) {
-        extrasArrayInt.add(field);
-    }
-
-    public void addField(ArgExtraArrayParcelableField field) {
-        extrasArrayPar.add(field);
     }
 
     /**
@@ -67,18 +49,6 @@ public class ArgAnnotatedClass {
                 "$T bundle=host.getArguments();\n" +
                         "if(bundle != null){\n", TypeUtil.BUNDLE);
         for (ArgExtraField field : extras) {
-            injectMethodBuilder.addCode("\tif(bundle.containsKey($S)) ", field.getKey());
-            injectMethodBuilder.addCode("host.$N = ($T)bundle.get($S);\n", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
-        }
-        for (ArgExtraArrayStringField field : extrasArrayStr) {
-            injectMethodBuilder.addCode("\tif(bundle.containsKey($S)) ", field.getKey());
-            injectMethodBuilder.addCode("host.$N = ($T)bundle.get($S);\n", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
-        }
-        for (ArgExtraArrayIntField field : extrasArrayInt) {
-            injectMethodBuilder.addCode("\tif(bundle.containsKey($S)) ", field.getKey());
-            injectMethodBuilder.addCode("host.$N = ($T)bundle.get($S);\n", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
-        }
-        for (ArgExtraArrayParcelableField field : extrasArrayPar) {
             injectMethodBuilder.addCode("\tif(bundle.containsKey($S)) ", field.getKey());
             injectMethodBuilder.addCode("host.$N = ($T)bundle.get($S);\n", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
         }
@@ -101,37 +71,20 @@ public class ArgAnnotatedClass {
         for (ArgExtraField field : extras) {
             MethodSpec.Builder key = MethodSpec.methodBuilder(String.valueOf(field.getFieldName()))
                     .addModifiers(Modifier.PUBLIC)
-                    .addParameter(ClassName.get(field.getFieldType()), String.valueOf(field.getFieldName()))
-                    .returns(ClassName.get("", "Builder"))
-                    .addStatement("super.extra($S,$L)", field.getFieldName().toString(), field.getFieldName().toString())
-                    .addStatement("return this");
-            methods.add(key);
-        }
-        for (ArgExtraArrayStringField field : extrasArrayStr) {
-            MethodSpec.Builder key = MethodSpec.methodBuilder(String.valueOf(field.getFieldName()))
-                    .addModifiers(Modifier.PUBLIC)
-                    .addParameter(ClassName.get(field.getFieldType()), String.valueOf(field.getFieldName()))
-                    .returns(ClassName.get("", "Builder"))
-                    .addStatement("super.putStringArrayList($S,$L)", field.getFieldName().toString(), field.getFieldName().toString())
-                    .addStatement("return this");
-            methods.add(key);
-        }
-        for (ArgExtraArrayIntField field : extrasArrayInt) {
-            MethodSpec.Builder key = MethodSpec.methodBuilder(String.valueOf(field.getFieldName()))
-                    .addModifiers(Modifier.PUBLIC)
-                    .addParameter(ClassName.get(field.getFieldType()), String.valueOf(field.getFieldName()))
-                    .returns(ClassName.get("", "Builder"))
-                    .addStatement("super.putIntegerArrayList($S,$L)", field.getFieldName().toString(), field.getFieldName().toString())
-                    .addStatement("return this");
-            methods.add(key);
-        }
-        for (ArgExtraArrayParcelableField field : extrasArrayPar) {
-            MethodSpec.Builder key = MethodSpec.methodBuilder(String.valueOf(field.getFieldName()))
-                    .addModifiers(Modifier.PUBLIC)
-                    .addParameter(ClassName.get(field.getFieldType()), String.valueOf(field.getFieldName()))
-                    .returns(ClassName.get("", "Builder"))
-                    .addStatement("super.putParcelableArrayList($S,$L)", field.getFieldName().toString(), field.getFieldName().toString())
-                    .addStatement("return this");
+                    .addParameter(ClassName.get(field.getFieldType()), field.getKey())
+                    .returns(ClassName.get("", "Builder"));
+
+            if ("java.util.ArrayList<java.lang.String>".equals(field.getFieldType().toString())) {
+                key.addStatement("super.putStringArrayList($S,$L)", field.getKey(), field.getKey());
+            } else if ("java.util.ArrayList<java.lang.Integer>".equals(field.getFieldType().toString())) {
+                key.addStatement("super.putIntegerArrayList($S,$L)", field.getKey(), field.getKey());
+            } else if (field.getFieldType().toString().startsWith("java.util.ArrayList<")) {
+                key.addStatement("super.putParcelableArrayList($S,$L)", field.getKey(), field.getKey());
+            } else {
+                key.addStatement("super.extra($S,$L)", field.getKey(), field.getKey());
+            }
+
+            key.addStatement("return this");
             methods.add(key);
         }
 
