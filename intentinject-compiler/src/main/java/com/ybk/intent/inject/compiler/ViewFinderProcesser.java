@@ -2,9 +2,6 @@ package com.ybk.intent.inject.compiler;
 
 import com.google.auto.service.AutoService;
 import com.ybk.intent.inject.annotation.ArgExtra;
-import com.ybk.intent.inject.annotation.ArgExtraArrayInt;
-import com.ybk.intent.inject.annotation.ArgExtraArrayParcelable;
-import com.ybk.intent.inject.annotation.ArgExtraArrayString;
 import com.ybk.intent.inject.annotation.Extra;
 
 import java.io.IOException;

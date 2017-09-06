@@ -99,8 +99,8 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         ArrayList<String> lists = new ArrayList<>();
         lists.add("fragment");
-        BlankFragment1 blankFragment1 = BlankFragment1_Builder.builder().param1("a").param2("a2").list(lists).build();
-        getSupportFragmentManager().beginTransaction().add(R.id.activity_main, blankFragment1).commit();
+//        BlankFragment1 blankFragment1 = BlankFragment1_Builder.builder().param1("a").param2("a2").list(lists).build();
+//        getSupportFragmentManager().beginTransaction().add(R.id.activity_main, blankFragment1).commit();
         tv.setText(toString());
     }
 
