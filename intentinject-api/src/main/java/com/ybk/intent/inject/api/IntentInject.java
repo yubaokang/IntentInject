@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IntentInject {
-    private static final Map<String, Inject> FINDER_MAP = new HashMap<>();
+    private static final Map<String, Inject<Object>> FINDER_MAP = new HashMap<>();
 
     /**
      * @param activity 在Activity中使用
@@ -30,19 +30,19 @@ public class IntentInject {
     }
 
     /**
-     * @param object 在任何Object中使用
+     * @param object 在任何Object中使用 todo 支持其他类型，Activity Fragment之外
      */
-    public static void inject(Object object) {
+    private static void inject(Object object) {
         _inject(object);
     }
 
     private static void _inject(Object host) {
         String className = host.getClass().getName();
         try {
-            Inject inject = FINDER_MAP.get(className);
+            Inject<Object> inject = FINDER_MAP.get(className);
             if (inject == null) {
                 Class<?> finderClass = Class.forName(className + "_Builder");
-                inject = (Inject) finderClass.newInstance();
+                inject = (Inject<Object>) finderClass.newInstance();
                 FINDER_MAP.put(className, inject);
             }
             inject.inject(host);

@@ -4,10 +4,16 @@ group = 'com.github.yubaokang'
 
 dependencies {
     compile project(':intentinject-annotation')
-    compile 'com.google.auto.service:auto-service:1.0-rc2'
-    compile 'com.squareup:javapoet:1.7.0'
+    //    https://github.com/google/auto
+    //    compile 'com.google.auto.value:auto-value:1.5'
+    compile 'com.squareup:javapoet:1.9.0'
+    compile 'com.google.auto.service:auto-service:1.0-rc3'
+    //    compile 'com.squareup:javapoet:1.7.0'
 }
-
+repositories {
+    jcenter()
+    mavenCentral()
+}
 javadoc {
     options {
         encoding "UTF-8"
@@ -16,5 +22,3 @@ javadoc {
         version true
     }
 }
-targetCompatibility = '1.7'
-sourceCompatibility = '1.7'

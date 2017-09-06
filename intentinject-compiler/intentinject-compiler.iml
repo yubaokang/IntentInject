@@ -13,7 +13,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/build/classes/main" />
     <output-test url="file://$MODULE_DIR$/build/classes/test" />
     <exclude-output />
@@ -28,9 +28,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="intentinject-annotation" exported="" />
-    <orderEntry type="library" exported="" name="auto-service-1.0-rc2" level="project" />
-    <orderEntry type="library" exported="" name="javapoet-1.7.0" level="project" />
+    <orderEntry type="library" exported="" name="javapoet-1.9.0" level="project" />
+    <orderEntry type="library" exported="" name="auto-service-1.0-rc3" level="project" />
     <orderEntry type="library" exported="" name="auto-common-0.3" level="project" />
-    <orderEntry type="library" exported="" name="guava-18.0" level="project" />
+    <orderEntry type="library" exported="" name="guava-19.0" level="project" />
   </component>
 </module>

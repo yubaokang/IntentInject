@@ -1,7 +1,7 @@
 package com.ybk.intent.inject.compiler;
 
 import com.google.auto.service.AutoService;
-import com.ybk.intent.inject.annotation.ArgExtra;
+import com.sun.tools.javac.code.Type;
 import com.ybk.intent.inject.annotation.Extra;
 
 import java.io.IOException;
@@ -44,7 +44,6 @@ public class ViewFinderProcesser extends AbstractProcessor {
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> types = new LinkedHashSet<>();
         types.add(Extra.class.getCanonicalName());
-        types.add(ArgExtra.class.getCanonicalName());
         return types;
     }
 
@@ -54,34 +53,20 @@ public class ViewFinderProcesser extends AbstractProcessor {
     }
 
     private Map<String, AnnotatedClass> mAnnotatedClassMap = new HashMap<>();
-    private Map<String, ArgAnnotatedClass> frgClassMap = new HashMap<>();
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         mAnnotatedClassMap.clear();
-        frgClassMap.clear();
         try {
             processIntentKey(roundEnv);
-            processArgIntentKey(roundEnv);
         } catch (IllegalArgumentException e) {
             error(e.getMessage());
             return true;
         }
         for (AnnotatedClass annotatedClass : mAnnotatedClassMap.values()) {
             try {
-                info("Generating file for %s", annotatedClass.getFullClassName());
                 annotatedClass.generateExtras().writeTo(mFiler);
             } catch (IOException e) {
-                error("Generate file failed, reason: %s", e.getMessage());
-                return true;
-            }
-        }
-        for (ArgAnnotatedClass argAnnotatedClass : frgClassMap.values()) {
-            try {
-                info("Generating file for %s", argAnnotatedClass.getFullClassName());
-                argAnnotatedClass.generateExtras().writeTo(mFiler);
-            } catch (IOException e) {
-                error("Generate file failed, reason: %s", e.getMessage());
                 return true;
             }
         }
@@ -91,41 +76,49 @@ public class ViewFinderProcesser extends AbstractProcessor {
     //activity
     private void processIntentKey(RoundEnvironment roundEnv) throws IllegalArgumentException {
         for (Element element : roundEnv.getElementsAnnotatedWith(Extra.class)) {
-            AnnotatedClass annotatedClass = getAnnotatedClass(element);
-            ExtraField field = new ExtraField(element);
-            annotatedClass.addField(field);
+            TypeElement classElement = (TypeElement) element.getEnclosingElement();
+            Type.ClassType classType = getHostType((Type.ClassType) classElement.asType());
+            if (classType.supertype_field.toString().equals("android.app.Activity")
+                    || classType.supertype_field.toString().equals("android.support.v7.app.AppCompatActivity")
+                    || classType.supertype_field.toString().equals("android.support.v4.app.FragmentActivity")) {
+                AnnotatedClass annotatedClass = getAnnotatedClass(element, AnnotatedClass.HOST_TYPE_ACTIVITY);
+                ExtraField field = new ExtraField(element);
+                annotatedClass.addField(field);
+            } else if (classType.supertype_field.toString().equals("android.support.v4.app.Fragment")
+                    || classType.supertype_field.toString().equals("android.app.Fragment")) {
+                AnnotatedClass annotatedClass = getAnnotatedClass(element, AnnotatedClass.HOST_TYPE_FRAGMENT);
+                ExtraField field = new ExtraField(element);
+                annotatedClass.addField(field);
+            }
         }
     }
 
-    //fragment
-    private void processArgIntentKey(RoundEnvironment roundEnv) throws IllegalArgumentException {
-        for (Element element : roundEnv.getElementsAnnotatedWith(ArgExtra.class)) {
-            ArgAnnotatedClass argAnnotatedClass = getArgAnnotatedClass(element);
-            ArgExtraField argExtraField = new ArgExtraField(element);
-            argAnnotatedClass.addField(argExtraField);
+    //获取类型
+    private Type.ClassType getHostType(Type.ClassType classType) {
+        if (classType == null) {
+            throw new RuntimeException("@Extra只能使用在Activity中或者Fragment中");
+        }
+        if (classType.supertype_field.toString().equals("android.app.Activity")
+                || classType.supertype_field.toString().equals("android.support.v7.app.AppCompatActivity")
+                || classType.supertype_field.toString().equals("android.support.v4.app.FragmentActivity")) {
+            return classType;
+        } else if (classType.supertype_field.toString().equals("android.support.v4.app.Fragment")
+                || classType.supertype_field.toString().equals("android.app.Fragment")) {
+            return classType;
+        } else {
+            return getHostType((Type.ClassType) classType.supertype_field);
         }
     }
 
-    private AnnotatedClass getAnnotatedClass(Element element) {
+    private AnnotatedClass getAnnotatedClass(Element element, int hostType) {
         TypeElement classElement = (TypeElement) element.getEnclosingElement();
         String fullClassName = classElement.getQualifiedName().toString();
         AnnotatedClass annotatedClass = mAnnotatedClassMap.get(fullClassName);
         if (annotatedClass == null) {
-            annotatedClass = new AnnotatedClass(classElement, mElementUtils);
+            annotatedClass = new AnnotatedClass(classElement, mElementUtils, hostType);
             mAnnotatedClassMap.put(fullClassName, annotatedClass);
         }
         return annotatedClass;
-    }
-
-    private ArgAnnotatedClass getArgAnnotatedClass(Element element) {
-        TypeElement classElement = (TypeElement) element.getEnclosingElement();
-        String fullClassName = classElement.getQualifiedName().toString();
-        ArgAnnotatedClass argAnnotatedClass = frgClassMap.get(fullClassName);
-        if (argAnnotatedClass == null) {
-            argAnnotatedClass = new ArgAnnotatedClass(classElement, mElementUtils);
-            frgClassMap.put(fullClassName, argAnnotatedClass);
-        }
-        return argAnnotatedClass;
     }
 
     private void error(String msg, Object... args) {

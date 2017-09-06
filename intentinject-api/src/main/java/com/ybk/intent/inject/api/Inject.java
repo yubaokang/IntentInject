@@ -1,5 +1,5 @@
 package com.ybk.intent.inject.api;
 
-interface Inject<T> {
+public interface Inject<T> {
     void inject(T host);
 }

@@ -8,86 +8,135 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.ybk.intent.inject.annotation.ArgExtra;
+import com.ybk.intent.inject.annotation.Extra;
 import com.ybk.intent.inject.api.IntentInject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import butterknife.BindView;
 
 public class BlankFragment1 extends BaseFragment {
-    @ArgExtra
+    @BindView(R.id.tv)
+    TextView tv;
+
+    @Extra
     Bundle bundle;
-    @ArgExtra
+    @Extra
     float aFloat;
-    @ArgExtra
+    @Extra
     float[] floats;
-    @ArgExtra
+    @Extra
     boolean aBoolean;
-    @ArgExtra
+    @Extra
     boolean[] booleen;
-    @ArgExtra
+    @Extra
     Test parcelable;
-    @ArgExtra
+    @Extra
     short aShort;
-    @ArgExtra
+    @Extra
     short[] shorts;
-    @ArgExtra
+    @Extra
     String string;
-    @ArgExtra
+    @Extra
     String[] strings;
-    @ArgExtra
+    @Extra
     byte aByte;
-    @ArgExtra
+    @Extra
     byte[] bytes;
-    @ArgExtra
+    @Extra
     double aDouble;
-    @ArgExtra
+    @Extra
     Double DDaouble;
-    @ArgExtra
+    @Extra
     double[] doubles;
-    @ArgExtra
+    @Extra
     Double[] DDoubles;
-    @ArgExtra
+    @Extra
     SerialzableTest serialzableTest;//SerialzableTest implement Serializable
-    @ArgExtra
+    @Extra
     SerialzableTest[] serialzableTests;//SerialzableTest implement Serializable
-    @ArgExtra
+    @Extra
     long aLong;
-    @ArgExtra
+    @Extra
     Long ALong;
-    @ArgExtra
+    @Extra
     long[] longs;
-    @ArgExtra
+    @Extra
     int anInt;
-    @ArgExtra
+    @Extra
     int[] ints;
-    @ArgExtra
+    @Extra
     char aChar;
-    @ArgExtra
+    @Extra
     char[] chars;
-    @ArgExtra
+    @Extra
     CharSequence charSequence;
-    @ArgExtra
+    @Extra
     CharSequence[] charSequences;
-    @ArgExtra
+    @Extra
     SparseArray<Test> sparseArray;
-    @ArgExtra
+    @Extra
     Size size;
-    @ArgExtra
+    @Extra
     SizeF sizeF;
-    @ArgExtra
+    @Extra
     IBinder iBinder;
-    @ArgExtra
+    @Extra
     ArrayList<String> arrayListString;
-    @ArgExtra
+    @Extra
     ArrayList<Test> arrayListTest;
-    @ArgExtra
+    @Extra
     ArrayList<Integer> arrayListInteger;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         IntentInject.inject(this);
+        tv.setText(toString());
+    }
+
+    @Override
+    public String toString() {
+        return "BlankFragment1{" +
+                "tv=" + tv +
+                ", bundle=" + bundle +
+                ", aFloat=" + aFloat +
+                ", floats=" + Arrays.toString(floats) +
+                ", aBoolean=" + aBoolean +
+                ", booleen=" + Arrays.toString(booleen) +
+                ", parcelable=" + parcelable +
+                ", aShort=" + aShort +
+                ", shorts=" + Arrays.toString(shorts) +
+                ", string='" + string + '\'' +
+                ", strings=" + Arrays.toString(strings) +
+                ", aByte=" + aByte +
+                ", bytes=" + Arrays.toString(bytes) +
+                ", aDouble=" + aDouble +
+                ", DDaouble=" + DDaouble +
+                ", doubles=" + Arrays.toString(doubles) +
+                ", DDoubles=" + Arrays.toString(DDoubles) +
+                ", serialzableTest=" + serialzableTest +
+                ", serialzableTests=" + Arrays.toString(serialzableTests) +
+                ", aLong=" + aLong +
+                ", ALong=" + ALong +
+                ", longs=" + Arrays.toString(longs) +
+                ", anInt=" + anInt +
+                ", ints=" + Arrays.toString(ints) +
+                ", aChar=" + aChar +
+                ", chars=" + Arrays.toString(chars) +
+                ", charSequence=" + charSequence +
+                ", charSequences=" + Arrays.toString(charSequences) +
+                ", sparseArray=" + sparseArray +
+                ", size=" + size +
+                ", sizeF=" + sizeF +
+                ", iBinder=" + iBinder +
+                ", arrayListString=" + arrayListString +
+                ", arrayListTest=" + arrayListTest +
+                ", arrayListInteger=" + arrayListInteger +
+                '}';
     }
 
     @Override
