@@ -32,5 +32,6 @@
     <orderEntry type="library" exported="" name="auto-service-1.0-rc3" level="project" />
     <orderEntry type="library" exported="" name="auto-common-0.3" level="project" />
     <orderEntry type="library" exported="" name="guava-19.0" level="project" />
+    <orderEntry type="library" exported="" name="tools" level="project" />
   </component>
 </module>
