@@ -19,6 +19,7 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 
@@ -75,6 +76,26 @@ public class ViewFinderProcesser extends AbstractProcessor {
 
     //activity
     private void processIntentKey(RoundEnvironment roundEnv) throws IllegalArgumentException {
+        for (Element element : roundEnv.getElementsAnnotatedWith(Extra.class)) {
+            TypeElement classElement = (TypeElement) element.getEnclosingElement();
+            Type.ClassType classType = getHostType((Type.ClassType) classElement.asType());
+            if (classType.supertype_field.toString().equals("android.app.Activity")
+                    || classType.supertype_field.toString().equals("android.support.v7.app.AppCompatActivity")
+                    || classType.supertype_field.toString().equals("android.support.v4.app.FragmentActivity")) {
+                AnnotatedClass annotatedClass = getAnnotatedClass(element, AnnotatedClass.HOST_TYPE_ACTIVITY);
+                ExtraField field = new ExtraField(element);
+                annotatedClass.addField(field);
+            } else if (classType.supertype_field.toString().equals("android.support.v4.app.Fragment")
+                    || classType.supertype_field.toString().equals("android.app.Fragment")) {
+                AnnotatedClass annotatedClass = getAnnotatedClass(element, AnnotatedClass.HOST_TYPE_FRAGMENT);
+                ExtraField field = new ExtraField(element);
+                annotatedClass.addField(field);
+            }
+        }
+    }
+
+    //activity
+    private void processIntentKeyOld(RoundEnvironment roundEnv) throws IllegalArgumentException {
         for (Element element : roundEnv.getElementsAnnotatedWith(Extra.class)) {
             TypeElement classElement = (TypeElement) element.getEnclosingElement();
             Type.ClassType classType = getHostType((Type.ClassType) classElement.asType());

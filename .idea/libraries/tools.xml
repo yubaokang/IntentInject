@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="tools">
     <CLASSES>
-      <root url="jar://$APPLICATION_HOME_DIR$/jre/jdk/Contents/Home/lib/tools.jar!/" />
+      <root url="jar://$PROJECT_DIR$/intentinject-compiler/libs/tools.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
