@@ -40,58 +40,6 @@ public class MainActivity extends AppCompatActivity {
     @Extra
     float[] floats;
     @Extra
-    boolean aBoolean;
-    @Extra
-    boolean[] booleen;
-    @Extra
-    Test parcelable;
-    @Extra
-    short aShort;
-    @Extra
-    short[] shorts;
-    @Extra
-    String string;
-    @Extra
-    String[] strings;
-    @Extra
-    byte aByte;
-    @Extra
-    byte[] bytes;
-    @Extra
-    double aDouble;
-    @Extra
-    Double DDaouble;
-    @Extra
-    double[] doubles;
-    @Extra
-    Double[] DDoubles;
-    @Extra
-    SerialzableTest serialzableTest;//SerialzableTest implement Serializable
-    @Extra
-    SerialzableTest[] serialzableTests;//SerialzableTest implement Serializable
-    @Extra
-    long aLong;
-    @Extra
-    Long ALong;
-    @Extra
-    long[] longs;
-    @Extra
-    int anInt;
-    @Extra
-    int[] ints;
-    @Extra
-    char aChar;
-    @Extra
-    char[] chars;
-    @Extra
-    CharSequence charSequence;
-    @Extra
-    CharSequence[] charSequences;
-    @Extra
-    SparseArray<Test> sparseArray;
-    @Extra
-    ArrayList<String> arrayListString;
-    @Extra
     ArrayList<Test> arrayListTest;
     @Extra
     ArrayList<Integer> arrayListInteger;
@@ -118,37 +66,9 @@ public class SplashActivity extends AppCompatActivity {
        MainActivity_Builder.intent(this)
                       .aFloat(1.1f)
                       .floats(floats)
-                      .aBoolean(true)
-                      .booleen(booleen)
-                      .parcelable(new Test("test Name"))
-                      .aShort(short1)
-                      .shorts(shorts)
-                      .string("string")
-                      .strings(strings)
-                      .aByte(byte1)
-                      .bytes(bytes)
-                      .aDouble(1.2)
-                      .DDaouble(1.3)
-                      .DDoubles(ddoubles)
-                      .doubles(doubles)
-                      .serialzableTest(new SerialzableTest("SerialzableTest"))
-                      .serialzableTests(serialzableTests)
-                      .aLong(11111111111L)
-                      .ALong(222222222222L)
-                      .longs(longs)
-                      .anInt(11111111)
-                      .ints(ints)
-                      .aChar('1')
-                      .chars(chars)
-                      .charSequence(cs)
-                      .charSequences(css)
-                      .sparseArray(sparseArray)
-                      .arrayListString((ArrayList<String>) stringList)
                       .arrayListTest((ArrayList<Test>) testArray)
                       .arrayListInteger((ArrayList<Integer>) intArray)
                       .start();
-        //MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").startActivityForResult(111);//使用startActivityForResult
-
         //自定义
         //Intent intent=MainActivity_Builder.intent(this).name("yubaokang").age(25).price(1.2f).id("idididid").getIntent();
         //startActivity(intent);
