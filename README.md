@@ -1,4 +1,4 @@
-# IntentInject
+# [github 地址IntentInject ](https://github.com/yubaokang/IntentInject)
 
 ## Version 1.3.1 更新说明：
 * 只保留Extra注解字段，在Activity和Fragment中同样的使用
@@ -9,6 +9,7 @@
 ###实现Activity或者Fragment 快速传递Bundle
 
 ###使用：
+
 #### top-level build.gradle
 ```java
 allprojects {
