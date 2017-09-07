@@ -2,7 +2,6 @@ package com.ybk.intent.inject.compiler;
 
 import com.google.auto.service.AutoService;
 import com.sun.tools.javac.code.Type;
-import com.ybk.intent.inject.annotation.ArgExtra;
 import com.ybk.intent.inject.annotation.Extra;
 
 import java.io.IOException;
@@ -45,7 +44,6 @@ public class ViewFinderProcesser extends AbstractProcessor {
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> types = new LinkedHashSet<>();
         types.add(Extra.class.getCanonicalName());
-//        types.add(ArgExtra.class.getCanonicalName());
         return types;
     }
 
@@ -60,10 +58,7 @@ public class ViewFinderProcesser extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         mAnnotatedClassMap.clear();
         try {
-            // TODO: 2017/9/7
             processIntentKey(roundEnv);
-//            processIntentKeyOldActivity(roundEnv);
-//            processIntentKeyOldFragment(roundEnv);
         } catch (IllegalArgumentException e) {
             error(e.getMessage());
             return true;
@@ -78,7 +73,6 @@ public class ViewFinderProcesser extends AbstractProcessor {
         return true;
     }
 
-    // TODO: 2017/9/7 只是用Extra 区分Activity和Fragment 无法导入 com.sun.tools.javac.code. 包
     private void processIntentKey(RoundEnvironment roundEnv) throws IllegalArgumentException {
         for (Element element : roundEnv.getElementsAnnotatedWith(Extra.class)) {
             TypeElement classElement = (TypeElement) element.getEnclosingElement();
@@ -95,24 +89,6 @@ public class ViewFinderProcesser extends AbstractProcessor {
                 ExtraField field = new ExtraField(element);
                 annotatedClass.addField(field);
             }
-        }
-    }
-
-    //activity
-    private void processIntentKeyOldActivity(RoundEnvironment roundEnv) throws IllegalArgumentException {
-        for (Element element : roundEnv.getElementsAnnotatedWith(Extra.class)) {
-            AnnotatedClass annotatedClass = getAnnotatedClass(element, AnnotatedClass.HOST_TYPE_ACTIVITY);
-            ExtraField field = new ExtraField(element);
-            annotatedClass.addField(field);
-        }
-    }
-
-    //fragment
-    private void processIntentKeyOldFragment(RoundEnvironment roundEnv) throws IllegalArgumentException {
-        for (Element element : roundEnv.getElementsAnnotatedWith(ArgExtra.class)) {
-            AnnotatedClass annotatedClass = getAnnotatedClass(element, AnnotatedClass.HOST_TYPE_FRAGMENT);
-            ArgExtraField field = new ArgExtraField(element);
-//            annotatedClass.addArgField(field);
         }
     }
 
