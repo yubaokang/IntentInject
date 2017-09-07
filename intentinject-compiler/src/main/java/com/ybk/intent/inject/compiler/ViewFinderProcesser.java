@@ -1,6 +1,7 @@
 package com.ybk.intent.inject.compiler;
 
 import com.google.auto.service.AutoService;
+import com.sun.tools.javac.code.Type;
 import com.ybk.intent.inject.annotation.ArgExtra;
 import com.ybk.intent.inject.annotation.Extra;
 
@@ -44,7 +45,7 @@ public class ViewFinderProcesser extends AbstractProcessor {
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> types = new LinkedHashSet<>();
         types.add(Extra.class.getCanonicalName());
-        types.add(ArgExtra.class.getCanonicalName());
+//        types.add(ArgExtra.class.getCanonicalName());
         return types;
     }
 
@@ -60,9 +61,9 @@ public class ViewFinderProcesser extends AbstractProcessor {
         mAnnotatedClassMap.clear();
         try {
             // TODO: 2017/9/7
-            //processIntentKey(roundEnv);
-            processIntentKeyOldActivity(roundEnv);
-            processIntentKeyOldFragment(roundEnv);
+            processIntentKey(roundEnv);
+//            processIntentKeyOldActivity(roundEnv);
+//            processIntentKeyOldFragment(roundEnv);
         } catch (IllegalArgumentException e) {
             error(e.getMessage());
             return true;
@@ -78,7 +79,7 @@ public class ViewFinderProcesser extends AbstractProcessor {
     }
 
     // TODO: 2017/9/7 只是用Extra 区分Activity和Fragment 无法导入 com.sun.tools.javac.code. 包
-   /* private void processIntentKey(RoundEnvironment roundEnv) throws IllegalArgumentException {
+    private void processIntentKey(RoundEnvironment roundEnv) throws IllegalArgumentException {
         for (Element element : roundEnv.getElementsAnnotatedWith(Extra.class)) {
             TypeElement classElement = (TypeElement) element.getEnclosingElement();
             Type.ClassType classType = getHostType((Type.ClassType) classElement.asType());
@@ -95,7 +96,7 @@ public class ViewFinderProcesser extends AbstractProcessor {
                 annotatedClass.addField(field);
             }
         }
-    }*/
+    }
 
     //activity
     private void processIntentKeyOldActivity(RoundEnvironment roundEnv) throws IllegalArgumentException {
@@ -111,12 +112,12 @@ public class ViewFinderProcesser extends AbstractProcessor {
         for (Element element : roundEnv.getElementsAnnotatedWith(ArgExtra.class)) {
             AnnotatedClass annotatedClass = getAnnotatedClass(element, AnnotatedClass.HOST_TYPE_FRAGMENT);
             ArgExtraField field = new ArgExtraField(element);
-            annotatedClass.addArgField(field);
+//            annotatedClass.addArgField(field);
         }
     }
 
     //获取类型
-   /* private Type.ClassType getHostType(Type.ClassType classType) {
+    private Type.ClassType getHostType(Type.ClassType classType) {
         if (classType == null) {
             throw new RuntimeException("@Extra只能使用在Activity中或者Fragment中");
         }
@@ -130,7 +131,7 @@ public class ViewFinderProcesser extends AbstractProcessor {
         } else {
             return getHostType((Type.ClassType) classType.supertype_field);
         }
-    }*/
+    }
 
     private AnnotatedClass getAnnotatedClass(Element element, int hostType) {
         TypeElement classElement = (TypeElement) element.getEnclosingElement();

@@ -32,6 +32,7 @@
     <orderEntry type="library" name="auto-service-1.0-rc3" level="project" />
     <orderEntry type="library" name="auto-common-0.3" level="project" />
     <orderEntry type="library" name="guava-19.0" level="project" />
+    <orderEntry type="library" name="tools" level="project" />
     <orderEntry type="library" name="_ybk_ybk_Android_myGit_IntentInject_IntentInject_intentinject_compiler_libs_tools_jar" level="project" />
   </component>
 </module>

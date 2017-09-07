@@ -12,7 +12,7 @@ dependencies {
     compile 'com.google.auto.service:auto-service:1.0-rc3'
     // 手动加入 tools.jar 到 compile
     // 使用 Gradle 提供的环境变量，避免自己写大量兼容性代码
-    //        compile files(Jvm.current().toolsJar)
+            compile files(Jvm.current().toolsJar)
     //    compile 'com.squareup:javapoet:1.7.0'
         compile files('libs/tools.jar')
 //    compile files('libs/tools.jar')

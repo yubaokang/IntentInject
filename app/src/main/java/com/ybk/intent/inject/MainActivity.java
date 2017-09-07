@@ -6,7 +6,10 @@ import android.os.IBinder;
 import android.util.Size;
 import android.util.SizeF;
 import android.util.SparseArray;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ybk.intent.inject.annotation.Extra;
 import com.ybk.intent.inject.api.IntentInject;
@@ -22,6 +25,8 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity {
     @BindView(R.id.tv)
     TextView tv;
+    @BindView(R.id.button2)
+    Button button2;
     // TODO: 2017/9/5 暂时不支持Parcelable对象数组 Test实现Parcelable
 //    @Extra("aaaaaaaaaaaaaaaa")
 //    Test[] tests;
@@ -103,7 +108,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         tv.setText(toString());
-
+        Toast.makeText(this, "this is a Activity", Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.button2)
@@ -191,6 +196,8 @@ public class MainActivity extends BaseActivity {
                 .arrayListInteger((ArrayList<Integer>) intArray)
                 .build();
         getSupportFragmentManager().beginTransaction().add(R.id.activity_main, blankFragment1).commit();
+        tv.setVisibility(View.GONE);
+        button2.setVisibility(View.GONE);
     }
 
     @Override

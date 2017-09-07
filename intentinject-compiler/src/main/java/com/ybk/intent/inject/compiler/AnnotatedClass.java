@@ -18,7 +18,7 @@ public class AnnotatedClass {
 
     public TypeElement mClassElement;
     public List<ExtraField> extras = new ArrayList<>();
-    public List<ArgExtraField> argExtras = new ArrayList<>();
+    //    public List<ArgExtraField> argExtras = new ArrayList<>();
     public Elements mElementUtils;
 
     public static final int HOST_TYPE_ACTIVITY = 1;//注解的宿主类型：Activity
@@ -39,9 +39,9 @@ public class AnnotatedClass {
         extras.add(field);
     }
 
-    public void addArgField(ArgExtraField field) {
-        argExtras.add(field);
-    }
+//    public void addArgField(ArgExtraField field) {
+//        argExtras.add(field);
+//    }
 
     public JavaFile generateExtras() {
         if (hostType == HOST_TYPE_ACTIVITY) {
@@ -156,7 +156,7 @@ public class AnnotatedClass {
         injectMethodBuilder.addCode(
                 "$T bundle=host.getArguments();\n" +
                         "if(bundle != null){\n", TypeUtil.BUNDLE);
-        for (ArgExtraField field : argExtras) {
+        for (ExtraField field : extras) {
             injectMethodBuilder.addCode("\tif(bundle.containsKey($S)) ", field.getKey());
             injectMethodBuilder.addCode("host.$N = ($T)bundle.get($S);\n", field.getFieldName(), TypeName.get(field.getFieldType()), field.getKey());
         }
@@ -176,7 +176,7 @@ public class AnnotatedClass {
         methods.add(injectConstructor);
 
         //extras
-        for (ArgExtraField field : argExtras) {
+        for (ExtraField field : extras) {
             MethodSpec.Builder key = MethodSpec.methodBuilder(String.valueOf(field.getFieldName()))
                     .addModifiers(Modifier.PUBLIC)
                     .addParameter(ClassName.get(field.getFieldType()), field.getKey())
