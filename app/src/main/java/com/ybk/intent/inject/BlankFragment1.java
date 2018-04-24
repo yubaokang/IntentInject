@@ -22,7 +22,7 @@ import java.util.Arrays;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BlankFragment1 extends Fragment {
+public class BlankFragment1 extends BaseFragment {
     @BindView(R.id.tv)
     TextView tv;
 
@@ -98,7 +98,6 @@ public class BlankFragment1 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        IntentInject.inject(this);
     }
 
     @Override
